@@ -1,0 +1,142 @@
+/* =========================================================
+   Evy Monteiro — Página de Obrigado
+   ========================================================= */
+
+body { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* TOP STRIP */
+.top-strip {
+  background: var(--dark);
+  padding: 12px 24px;
+  text-align: center;
+  border-bottom: 3px solid var(--yellow);
+}
+.top-strip span {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--yellow);
+}
+
+/* CONFIRM BANNER */
+.confirm-banner {
+  background: var(--white);
+  border-bottom: 1px solid #E0E0E0;
+  padding: 12px 24px; text-align: center;
+}
+.confirm-banner p {
+  font-size: 14px; color: var(--muted);
+  max-width: 600px; margin: 0 auto;
+}
+.confirm-banner strong { color: var(--dark); font-weight: 500; }
+
+/* HERO OBRIGADO */
+.hero-thanks {
+  background: var(--dark);
+  padding: 88px 28px 80px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.hero-thanks::before {
+  content: '';
+  position: absolute; top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(254,199,43,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 2px solid var(--yellow); margin-bottom: 28px;
+}
+.hero-check svg {
+  width: 26px; height: 26px;
+  stroke: var(--yellow); fill: none;
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+.hero-thanks .hero-eyebrow {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--yellow); margin-bottom: 16px; display: block;
+}
+.hero-thanks h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 300; line-height: 1.15;
+  color: var(--white);
+  max-width: 620px; margin: 0 auto 20px;
+  letter-spacing: -0.01em;
+}
+.hero-thanks h1 em { font-style: italic; color: var(--yellow); }
+.hero-thanks .hero-sub {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.78);
+  max-width: 480px; margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+/* VIDEO */
+.video-wrap { width: 100%; max-width: 680px; margin: 32px auto 36px; }
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%; height: 0; overflow: hidden;
+  border-radius: 2px; border: 3px solid var(--yellow);
+}
+.video-responsive iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: 0;
+}
+
+/* STEPS */
+.steps { background: var(--white); padding: 72px 0; }
+.steps h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 300; color: var(--dark);
+  margin-bottom: 32px; line-height: 1.25;
+}
+.steps h2 em { font-style: italic; color: var(--red); }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.step-card { background: var(--bg); padding: 28px 22px; }
+.step-num {
+  font-family: var(--font-serif);
+  font-size: 40px; font-weight: 600;
+  color: var(--yellow); line-height: 1;
+  display: block; margin-bottom: 10px;
+}
+.step-title { font-size: 14px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+.step-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* SUPPORT */
+.support { background: var(--bg); padding: 72px 0; }
+.support-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.support-card {
+  background: var(--white);
+  border-top: 3px solid var(--yellow);
+  padding: 28px 24px;
+  border-radius: 0 0 2px 2px;
+}
+.support-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px; font-weight: 400;
+  color: var(--dark); margin-bottom: 10px;
+}
+.support-card p {
+  font-size: 13px; color: var(--muted);
+  line-height: 1.6; margin-bottom: 20px;
+}
+.support-card a {
+  display: inline-block;
+  background: var(--red); color: var(--white);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+  padding: 11px 22px; border-radius: 2px;
+  transition: background 0.2s;
+}
+.support-card a:hover { background: var(--red-dk); }
+
+@media (max-width: 580px) {
+  .steps-grid { grid-template-columns: 1fr; gap: 2px; }
+  .support-inner { grid-template-columns: 1fr; }
+}
