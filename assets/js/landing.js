@@ -28,6 +28,7 @@ async function handleSubmit(event) {
   const utms = getUTMParameters();
 
   const data = {
+    access_key: 'c8d3f3e5-e14b-4f3a-8c3f-5e1f3e5f3e5f',
     nome: formData.get('nome'),
     email: formData.get('email'),
     whatsapp: formData.get('whatsapp'),
@@ -45,7 +46,7 @@ async function handleSubmit(event) {
   };
 
   try {
-    const response = await fetch('https://formspree.io/f/xyzgbnzd', {
+    const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
