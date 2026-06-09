@@ -273,6 +273,12 @@ section { width: 100%; }
   margin-bottom: 5px;
 }
 
+.form-label[style*="display: block"] {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 12px;
+}
+
 .form-label span { color: var(--red); }
 
 .form-input, .form-select, .form-textarea {

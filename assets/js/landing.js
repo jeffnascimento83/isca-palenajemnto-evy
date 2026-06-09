@@ -52,10 +52,11 @@ async function handleSubmit(event) {
     });
 
     const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'Erro');
+    if (!response.ok) throw new Error(result.error || `Erro ${response.status}`);
     window.location.href = `/obrigado.html?lead_id=${result.leadId}`;
   } catch (error) {
-    console.error('Erro:', error);
-    alert('Erro ao processar formulário');
+    console.error('Erro ao enviar formulário:', error);
+    console.log('Dados enviados:', data);
+    alert('Erro ao processar formulário: ' + (error.message || 'Tente novamente'));
   }
 }
