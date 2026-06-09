@@ -25,7 +25,7 @@ async function handleSubmit(event) {
   formData.append('utm_term', utms.get('utm_term') || '');
 
   try {
-    await fetch('https://script.google.com/macros/s/AKfycbznx2B-159OYZ40ppFeIKyuLXZTydv-Nit1e_uB31czgkUcjqb20g9Zqzk0bwpGVLRIQw/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbzHPfXgptBo8kWj6xDQMj4tK82NVLy0DEGy5yCSU970Ws6FkpuSvgp8Ty7EWgb_2uEaDg/exec', {
       method: 'POST',
       body: formData,
     }).catch(() => {});
