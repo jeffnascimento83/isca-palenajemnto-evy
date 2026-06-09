@@ -42,21 +42,27 @@ async function handleSubmit(event) {
     utm_campaign: utms.utm_campaign,
     utm_content: utms.utm_content,
     utm_term: utms.utm_term,
+    isca_type: 'planejamento',
+    status: 'novo_lead'
   };
 
   try {
-    const response = await fetch('https://wiseleads.byevymonteiro.com/api/submit-lead', {
+    const response = await fetch('https://qwttkxhbhnjhvakfddao.supabase.co/rest/v1/leads', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ'
+      },
       body: JSON.stringify(data),
     });
 
     const result = await response.json();
-    if (!response.ok) throw new Error(result.error || `Erro ${response.status}`);
-    window.location.href = `/obrigado.html?lead_id=${result.leadId}`;
+    if (!response.ok) throw new Error(result.message || result.error || 'Erro');
+    
+    window.location.href = `/obrigado.html?lead_id=${result[0]?.id || 'ok'}`;
   } catch (error) {
-    console.error('Erro ao enviar formulário:', error);
-    console.log('Dados enviados:', data);
+    console.error('Erro:', error);
     alert('Erro ao processar formulário: ' + (error.message || 'Tente novamente'));
   }
 }
