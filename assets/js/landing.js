@@ -1,3 +1,7 @@
+// Supabase config
+const SUPABASE_URL = 'https://qwttkxhbhnjhvakfddao.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ';
+
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
 }
@@ -47,20 +51,22 @@ async function handleSubmit(event) {
   };
 
   try {
-    const response = await fetch('https://qwttkxhbhnjhvakfddao.supabase.co/rest/v1/leads', {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ'
+        'apikey': SUPABASE_KEY,
       },
       body: JSON.stringify(data),
     });
 
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.message || result.error || 'Erro');
+    if (response.status === 201) {
+      window.location.href = '/obrigado.html';
+      return;
+    }
     
-    window.location.href = `/obrigado.html?lead_id=${result[0]?.id || 'ok'}`;
+    const error = await response.json();
+    throw new Error(error.message || 'Erro ao salvar');
   } catch (error) {
     console.error('Erro:', error);
     alert('Erro ao processar formulário: ' + (error.message || 'Tente novamente'));
