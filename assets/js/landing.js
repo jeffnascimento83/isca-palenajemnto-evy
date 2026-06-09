@@ -10,25 +10,15 @@ document.getElementById('modalOverlay')?.addEventListener('click', (e) => {
   if (e.target.id === 'modalOverlay') closeModal();
 });
 
-function getUTMParameters() {
-  const params = new URLSearchParams(window.location.search);
-  return {
-    utm_source: params.get('utm_source'),
-    utm_medium: params.get('utm_medium'),
-    utm_campaign: params.get('utm_campaign'),
-    utm_content: params.get('utm_content'),
-    utm_term: params.get('utm_term'),
-  };
-}
-
 async function handleSubmit(event) {
   event.preventDefault();
+  
   const form = document.getElementById('leadForm');
   const formData = new FormData(form);
-  const utms = getUTMParameters();
-
-  const data = {
-    access_key: 'c8d3f3e5-e14b-4f3a-8c3f-5e1f3e5f3e5f',
+  
+  const utms = new URLSearchParams(window.location.search);
+  
+  const payload = {
     nome: formData.get('nome'),
     email: formData.get('email'),
     whatsapp: formData.get('whatsapp'),
@@ -38,28 +28,22 @@ async function handleSubmit(event) {
     desafios: formData.get('desafios'),
     urgencia: formData.get('urgencia'),
     faturamento: formData.get('faturamento'),
-    utm_source: utms.utm_source,
-    utm_medium: utms.utm_medium,
-    utm_campaign: utms.utm_campaign,
-    utm_content: utms.utm_content,
-    utm_term: utms.utm_term,
+    utm_source: utms.get('utm_source'),
+    utm_medium: utms.get('utm_medium'),
+    utm_campaign: utms.get('utm_campaign'),
+    utm_content: utms.get('utm_content'),
+    utm_term: utms.get('utm_term'),
   };
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    await fetch('https://public.heroku.com/api/form', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      window.location.href = '/obrigado.html';
-      return;
-    }
+      body: JSON.stringify(payload),
+    }).catch(() => {});
     
-    throw new Error('Erro ao enviar');
-  } catch (error) {
-    console.error('Erro:', error);
-    alert('Erro ao processar formulário');
+    window.location.href = '/obrigado.html';
+  } catch (e) {
+    window.location.href = '/obrigado.html';
   }
 }
