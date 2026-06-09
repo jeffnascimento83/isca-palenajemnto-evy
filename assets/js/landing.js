@@ -36,17 +36,13 @@ async function handleSubmit(event) {
   };
 
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbznx2B-159OYZ40ppFeIKyuLXZTydv-Nit1e_uB31czgkUcjqb20g9Zqzk0bwpGVLRIQw/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbznx2B-159OYZ40ppFeIKyuLXZTydv-Nit1e_uB31czgkUcjqb20g9Zqzk0bwpGVLRIQw/exec', {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-    });
+    }).catch(() => {});
 
-    console.log('✅ Enviado para Google Sheets!');
     window.location.href = '/obrigado.html';
   } catch (error) {
-    console.error('Erro:', error);
     window.location.href = '/obrigado.html';
   }
 }
