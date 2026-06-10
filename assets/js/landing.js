@@ -1,9 +1,14 @@
-const { createClient } = window.supabase;
+let supabase = null;
 
-const supabase = createClient(
-  'https://qwttkxhbhnjhvakfddao.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ'
-);
+// Espera a biblioteca Supabase carregar
+window.addEventListener('load', () => {
+  const { createClient } = window.supabase;
+  supabase = createClient(
+    'https://qwttkxhbhnjhvakfddao.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dHRreGhiaG5qaHZha2ZkZGFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODEwNjUzNTIsImV4cCI6MTk5NjY0MTM1Mn0.p3T4xJi3FKQKPJsKwNZLxG96MxJ4OdIGVMHHEqPDRKQ'
+  );
+  console.log('✅ Supabase inicializado');
+});
 
 function openModal() {
   document.getElementById('modalOverlay').classList.add('open');
@@ -19,6 +24,11 @@ document.getElementById('modalOverlay')?.addEventListener('click', (e) => {
 
 async function handleSubmit(event) {
   event.preventDefault();
+  
+  if (!supabase) {
+    alert('Erro: Supabase não inicializado. Tente novamente.');
+    return;
+  }
   
   const form = document.getElementById('leadForm');
   const formData = new FormData(form);
@@ -54,14 +64,14 @@ async function handleSubmit(event) {
 
     if (error) {
       console.error('❌ Erro Supabase:', error);
-      throw error;
+      alert('Erro: ' + error.message);
+      return;
     }
 
     console.log('✅ Lead salvo com sucesso!', data);
     window.location.href = '/obrigado.html';
   } catch (error) {
     console.error('💥 Erro ao enviar:', error);
-    // Ainda redireciona mesmo com erro para melhor UX
-    window.location.href = '/obrigado.html';
+    alert('Erro: ' + error.message);
   }
 }
