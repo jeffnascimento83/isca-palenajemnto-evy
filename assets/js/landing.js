@@ -1,3 +1,4 @@
+// v3 - Fixed initialization
 let supabase = null;
 
 // Espera a biblioteca Supabase carregar
