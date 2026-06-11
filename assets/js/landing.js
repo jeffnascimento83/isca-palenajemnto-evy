@@ -36,12 +36,13 @@ async function handleSubmit(event) {
 
   console.log('📤 Enviando JSON:', payload);
 
-  try {
-    await fetch('https://script.google.com/macros/s/AKfycbzHPfXgptBo8kWj6xDQMj4tK82NVLy0DEGy5yCSU970Ws6FkpuSvgp8Ty7EWgb_2uEaDg/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).catch(() => {});
+ try {
+  await fetch('https://script.google.com/macros/s/AKfycbzHPfXgptBo8kWj6xDQMj4tK82NVLy0DEGy5yCSU970Ws6FkpuSvgp8Ty7EWgb_2uEaDg/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
 
     window.location.href = '/obrigado.html';
   } catch (error) {
