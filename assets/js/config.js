@@ -12,7 +12,7 @@ window.EVY_CONFIG = {
 
   // Webhook do formulário (deixe vazio enquanto não tiver).
   // Quando definido, sendLead() fará POST JSON para esta URL.
-  leadWebhookUrl: '',
+  leadWebhookUrl: 'https://script.google.com/macros/s/AKfycbwUWAK1fnX3ecZe9n0zjZSyYEh1QCTdLMyRXcMKbBb3MiSlnBPJ05RlchZh8QGhZxcqNA/exec',
 
   // Página de destino após envio do formulário
   thankYouPath: 'obrigado.html'
