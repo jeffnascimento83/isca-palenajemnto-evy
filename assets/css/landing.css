@@ -391,8 +391,60 @@ footer {
 
 .ft-copy strong { color: var(--yellow); }
 
-@media (max-width: 700px) {
-  .hero { padding: 32px 24px; }
-  .stats-row { grid-template-columns: 1fr; gap: 2px; }
-  .modal-box { padding: 28px 20px; }
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+
+  /* Hero Section */
+  .hero { padding: 40px 20px; min-height: auto; justify-content: center !important; }
+  .hero-content { max-width: 100%; }
+  .hero h1 { font-size: clamp(24px, 5vw, 36px); }
+
+  /* Hero inline override */
+  section[style*="justify-content: flex-end"] {
+    justify-content: center !important;
+  }
+  section[style*="max-width: 50%"] > div {
+    max-width: 100% !important;
+    padding: 40px 20px !important;
+  }
+
+  /* Stats */
+  .stats-row { grid-template-columns: 1fr; gap: 0; }
+  .stat-cell { padding: 20px 16px; }
+  .stat-num { font-size: 32px; }
+
+  /* Sections */
+  .strategy, .method, .bio { padding: 40px 0; }
+  .promise { padding: 40px 20px; }
+
+  /* Bio/About Section */
+  section[style*="grid-template-columns: 1fr 1fr"] {
+    display: block !important;
+  }
+  section[style*="grid-template-columns: 1fr 1fr"] > div {
+    padding: 0 !important;
+    margin-bottom: 30px !important;
+  }
+  section[style*="height: 50vh"] {
+    height: 300px !important;
+  }
+
+  /* Typography */
+  h2 { font-size: clamp(20px, 3.5vw, 32px) !important; }
+  .promise blockquote { font-size: clamp(20px, 3.5vw, 32px); }
+
+  /* Modal */
+  .modal-box {
+    padding: 24px 16px;
+    max-width: calc(100% - 20px);
+  }
+  .modal-box h3 { font-size: 20px; }
+
+  /* Form */
+  .form-label { font-size: 10px; }
+  .form-input, .form-select, .form-textarea { font-size: 13px; padding: 8px 10px; }
+  .form-textarea { min-height: 60px; }
+
+  /* Buttons */
+  .btn-main, .btn-promise { padding: 14px 24px; font-size: 12px; }
 }
