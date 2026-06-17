@@ -392,113 +392,83 @@ footer {
 .ft-copy strong { color: var(--yellow); }
 
 @media (max-width: 768px) {
+  * { box-sizing: border-box; }
+
+  body { width: 100vw !important; overflow-x: hidden !important; }
+
   .container {
-    max-width: 96% !important;
-    margin: 0 auto !important;
-    padding: 0 2% !important;
-  }
-
-  /* Hero Section - sem background image */
-  section[style*="height: 100vh"] {
-    height: auto !important;
-    min-height: auto !important;
-    padding: 3% 2% !important;
     width: 100% !important;
-    margin: 0 !important;
-    background: #1A1A1A !important;
-    background-image: none !important;
-    justify-content: center !important;
-  }
-
-  section[style*="justify-content: flex-end"] {
-    justify-content: center !important;
-  }
-
-  section[style*="max-width: 50%"] > div {
     max-width: 100% !important;
-    width: 96% !important;
-    margin: 0 auto !important;
-    padding: 2% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  div[style*="max-width: 50%"] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  div[style*="grid-template-columns: 1fr 1fr"] > div {
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+
+  div[style*="height: 50vh"] {
+    height: 250px !important;
   }
 
   /* Stats */
-  .stats-row {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .stat-cell {
-    padding: 3% 2% !important;
-    width: 100% !important;
-  }
-  .stat-num { font-size: 24px; }
-  .stat-label { font-size: 10px; }
-
-  /* Sections */
-  .strategy {
-    padding: 3% 2% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .method {
-    padding: 3% 2% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .bio {
-    padding: 3% 2% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .promise {
-    padding: 3% 2% !important;
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* Bio/About Section */
-  section[style*="grid-template-columns: 1fr 1fr"] {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  section[style*="grid-template-columns: 1fr 1fr"] > div {
-    padding: 2% !important;
-    margin: 0 !important;
-    margin-bottom: 2% !important;
-    width: 100% !important;
-  }
-  section[style*="height: 50vh"] {
-    height: auto !important;
-    max-height: 300px !important;
-    margin-bottom: 2% !important;
-  }
+  .stats-row { grid-template-columns: 1fr !important; }
 
   /* Typography */
-  h1 { font-size: 20px !important; line-height: 1.3 !important; }
-  h2 { font-size: 18px !important; }
-  p { font-size: 14px !important; }
-  .promise blockquote { font-size: 18px !important; }
+  h1 { font-size: 18px !important; }
+  h2 { font-size: 16px !important; }
+  p { font-size: 13px !important; }
+  span { font-size: 13px !important; }
+
+  .stat-num { font-size: 20px !important; }
+  .stat-label { font-size: 9px !important; }
+
+  .promise blockquote { font-size: 16px !important; }
 
   /* Modal */
   .modal-box {
-    padding: 3% !important;
-    max-width: 95vw !important;
-    width: 95vw !important;
+    width: 90vw !important;
+    max-width: 90vw !important;
+    padding: 16px !important;
   }
-  .modal-box h3 { font-size: 18px; }
+  .modal-box h3 { font-size: 16px !important; }
 
   /* Form */
-  .form-label { font-size: 12px; }
-  .form-input, .form-select, .form-textarea { font-size: 14px; padding: 2%; }
-  .form-textarea { min-height: 100px; }
+  .form-label { font-size: 11px !important; }
+  .form-input, .form-select, .form-textarea { font-size: 13px !important; padding: 8px !important; }
+  .form-textarea { min-height: 80px !important; }
 
   /* Buttons */
   .btn-main, .btn-promise {
-    padding: 2% 4% !important;
-    font-size: 12px !important;
     width: 100% !important;
+    padding: 10px 16px !important;
+    font-size: 11px !important;
   }
 }
