@@ -392,15 +392,19 @@ footer {
 .ft-copy strong { color: var(--yellow); }
 
 @media (max-width: 768px) {
-  .container { padding: 0 16px; }
+  .container {
+    max-width: 96% !important;
+    margin: 0 auto !important;
+    padding: 0 2% !important;
+  }
 
-  /* Hero Section - Mobile optimized */
+  /* Hero Section */
   section[style*="height: 100vh"] {
     height: auto !important;
-    min-height: auto !important;
-    padding: 20px !important;
-    background-attachment: fixed !important;
-    background-position: center right !important;
+    min-height: 50vh !important;
+    padding: 2% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
   }
 
   section[style*="justify-content: flex-end"] {
@@ -408,50 +412,86 @@ footer {
   }
 
   section[style*="max-width: 50%"] > div {
-    max-width: 100% !important;
-    padding: 20px 12px !important;
+    max-width: 96% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+    padding: 4% 2% !important;
   }
 
-  .hero-content { max-width: 100%; }
-  .hero h1 { font-size: clamp(24px, 5vw, 32px); }
-
   /* Stats */
-  .stats-row { grid-template-columns: 1fr; gap: 0; }
-  .stat-cell { padding: 20px 16px; }
-  .stat-num { font-size: 32px; }
+  .stats-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+  }
+  .stat-cell {
+    padding: 4% 2% !important;
+    width: 100% !important;
+  }
+  .stat-num { font-size: 6vw; }
 
   /* Sections */
-  .strategy, .method, .bio { padding: 40px 0; }
-  .promise { padding: 40px 20px; }
+  .strategy {
+    padding: 6% 2% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+  }
+  .method {
+    padding: 6% 2% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+  }
+  .bio {
+    padding: 6% 2% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+  }
+  .promise {
+    padding: 6% 2% !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+  }
 
   /* Bio/About Section */
   section[style*="grid-template-columns: 1fr 1fr"] {
     display: block !important;
+    width: 96% !important;
+    margin: 0 2% !important;
+    padding: 0 !important;
   }
   section[style*="grid-template-columns: 1fr 1fr"] > div {
-    padding: 0 !important;
-    margin-bottom: 30px !important;
+    padding: 0 2% !important;
+    margin: 0 !important;
+    margin-bottom: 4% !important;
+    width: 96% !important;
   }
   section[style*="height: 50vh"] {
-    height: 300px !important;
+    height: 60vw !important;
+    margin-bottom: 4% !important;
   }
 
   /* Typography */
-  h2 { font-size: clamp(20px, 3.5vw, 32px) !important; }
-  .promise blockquote { font-size: clamp(20px, 3.5vw, 32px); }
+  h2 { font-size: 5vw !important; }
+  .promise blockquote { font-size: 4.5vw; }
 
   /* Modal */
   .modal-box {
-    padding: 24px 16px;
-    max-width: calc(100% - 20px);
+    padding: 4% !important;
+    max-width: 90vw !important;
+    width: 90vw !important;
   }
-  .modal-box h3 { font-size: 20px; }
+  .modal-box h3 { font-size: 5vw; }
 
   /* Form */
-  .form-label { font-size: 10px; }
-  .form-input, .form-select, .form-textarea { font-size: 13px; padding: 8px 10px; }
-  .form-textarea { min-height: 60px; }
+  .form-label { font-size: 2vw; }
+  .form-input, .form-select, .form-textarea { font-size: 3.5vw; padding: 2%; }
+  .form-textarea { min-height: 20vw; }
 
   /* Buttons */
-  .btn-main, .btn-promise { padding: 14px 24px; font-size: 12px; }
+  .btn-main, .btn-promise {
+    padding: 3% 5% !important;
+    font-size: 3vw !important;
+    width: 100% !important;
+  }
 }
