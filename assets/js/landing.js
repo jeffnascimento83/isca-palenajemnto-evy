@@ -12,6 +12,7 @@ async function handleSubmit(event) {
   const form = document.getElementById('leadForm');
   const formData = new FormData(form);
   const utms = new URLSearchParams(window.location.search);
+
   const payload = {
     nome: formData.get('nome'),
     email: formData.get('email'),
@@ -22,25 +23,37 @@ async function handleSubmit(event) {
     desafios: formData.get('desafios'),
     urgencia: formData.get('urgencia'),
     faturamento: formData.get('faturamento'),
-    utm_source: utms.get('utm_source') || '',
-    utm_medium: utms.get('utm_medium') || '',
-    utm_campaign: utms.get('utm_campaign') || '',
-    utm_content: utms.get('utm_content') || '',
-    utm_term: utms.get('utm_term') || ''
+    utm_source: utms.get('utm_source') || null,
+    utm_medium: utms.get('utm_medium') || null,
+    utm_campaign: utms.get('utm_campaign') || null,
+    utm_content: utms.get('utm_content') || null,
+    utm_term: utms.get('utm_term') || null,
+    isca_type: 'planejamento',
+    status: 'novo_lead'
   };
-  console.log('📤 Enviando JSON:', payload);
+
+  console.log('📤 Enviando para Supabase:', payload);
+
   try {
-    const webhookUrl = window.EVY_CONFIG?.leadWebhookUrl;
-    if (webhookUrl) {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
+    const { createClient } = window.supabase;
+    const supabase = createClient(
+      window.EVY_CONFIG.supabaseUrl,
+      window.EVY_CONFIG.supabaseAnonKey
+    );
+
+    const { error } = await supabase
+      .from('leads')
+      .insert([payload]);
+
+    if (error) {
+      console.error('❌ Erro ao inserir lead:', error);
+      throw error;
     }
+
+    console.log('✅ Lead inserido com sucesso!');
     window.location.href = '/obrigado.html';
   } catch (error) {
-    window.location.href = '/obrigado.html';
+    console.error('❌ Erro ao enviar formulário:', error);
+    alert('Ocorreu um erro ao processar sua inscrição. Tente novamente ou entre em contato conosco.');
   }
 }
