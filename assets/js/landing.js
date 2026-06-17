@@ -14,25 +14,32 @@ async function handleSubmit(event) {
   const utms = new URLSearchParams(window.location.search);
 
   const payload = {
-    nome: formData.get('nome'),
-    email: formData.get('email'),
-    whatsapp: formData.get('whatsapp'),
-    instagram: formData.get('instagram'),
-    funcionarios: formData.get('funcionarios'),
-    consciencia: formData.get('consciencia'),
-    desafios: formData.get('desafios'),
-    urgencia: formData.get('urgencia'),
-    faturamento: formData.get('faturamento'),
-    utm_source: utms.get('utm_source') || null,
-    utm_medium: utms.get('utm_medium') || null,
-    utm_campaign: utms.get('utm_campaign') || null,
-    utm_content: utms.get('utm_content') || null,
-    utm_term: utms.get('utm_term') || null,
+    nome: formData.get('nome') || '',
+    email: formData.get('email') || '',
+    whatsapp: formData.get('whatsapp') || '',
+    instagram: formData.get('instagram') || '',
+    funcionarios: formData.get('funcionarios') || '',
+    consciencia: formData.get('consciencia') || '',
+    desafios: formData.get('desafios') || '',
+    urgencia: formData.get('urgencia') || '',
+    faturamento: formData.get('faturamento') || '',
+    utm_source: utms.get('utm_source') || '',
+    utm_medium: utms.get('utm_medium') || '',
+    utm_campaign: utms.get('utm_campaign') || '',
+    utm_content: utms.get('utm_content') || '',
+    utm_term: utms.get('utm_term') || '',
     isca_type: 'planejamento',
     status: 'novo_lead'
   };
 
   console.log('📤 Enviando para Supabase:', payload);
+  console.log('Fields captured:', {
+    funcionarios: formData.get('funcionarios'),
+    consciencia: formData.get('consciencia'),
+    desafios: formData.get('desafios'),
+    urgencia: formData.get('urgencia'),
+    faturamento: formData.get('faturamento')
+  });
 
   try {
     const response = await fetch(
