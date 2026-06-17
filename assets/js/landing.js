@@ -18,10 +18,7 @@ async function handleSubmit(event) {
     email: formData.get('email') || '',
     whatsapp: formData.get('whatsapp') || '',
     instagram: formData.get('instagram') || '',
-    funcionarios: formData.get('funcionarios') || '',
-    consciencia: formData.get('consciencia') || '',
     desafios: formData.get('desafios') || '',
-    urgencia: formData.get('urgencia') || '',
     faturamento: formData.get('faturamento') || '',
     utm_source: utms.get('utm_source') || '',
     utm_medium: utms.get('utm_medium') || '',
@@ -33,13 +30,6 @@ async function handleSubmit(event) {
   };
 
   console.log('📤 Enviando para Supabase:', payload);
-  console.log('Fields captured:', {
-    funcionarios: formData.get('funcionarios'),
-    consciencia: formData.get('consciencia'),
-    desafios: formData.get('desafios'),
-    urgencia: formData.get('urgencia'),
-    faturamento: formData.get('faturamento')
-  });
 
   try {
     const response = await fetch(
