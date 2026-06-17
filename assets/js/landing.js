@@ -35,19 +35,23 @@ async function handleSubmit(event) {
   console.log('📤 Enviando para Supabase:', payload);
 
   try {
-    const { createClient } = window.supabase;
-    const supabase = createClient(
-      window.EVY_CONFIG.supabaseUrl,
-      window.EVY_CONFIG.supabaseAnonKey
+    const response = await fetch(
+      `${window.EVY_CONFIG.supabaseUrl}/rest/v1/leads`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': window.EVY_CONFIG.supabaseAnonKey,
+          'Authorization': `Bearer ${window.EVY_CONFIG.supabaseAnonKey}`
+        },
+        body: JSON.stringify(payload)
+      }
     );
 
-    const { error } = await supabase
-      .from('leads')
-      .insert([payload]);
-
-    if (error) {
+    if (!response.ok) {
+      const error = await response.json();
       console.error('❌ Erro ao inserir lead:', error);
-      throw error;
+      throw new Error(error.message || 'Erro ao inserir lead');
     }
 
     console.log('✅ Lead inserido com sucesso!');
