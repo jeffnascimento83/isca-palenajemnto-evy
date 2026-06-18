@@ -391,84 +391,117 @@ footer {
 
 .ft-copy strong { color: var(--yellow); }
 
+/* ============================================================
+   RESPONSIVO — Tablet / Celular  (reescrito)
+   Tipografia legível, hero editorial (foto + texto sobre scrim),
+   stats empilhados, modal em tela cheia e inputs sem zoom no iOS.
+   ============================================================ */
+
+/* ---------- TABLET ---------- */
+@media (max-width: 980px) {
+  /* Hero: texto deixa de ficar preso na metade direita */
+  section[style*="height: 100vh"] > div { max-width: 72% !important; }
+
+  /* Bio: reduz o respiro lateral exagerado */
+  div[style*="grid-template-columns: 1fr 1fr"] { gap: 36px !important; }
+  div[style*="padding: 0 40px"] { padding: 0 8px !important; }
+}
+
+/* ---------- CELULAR ---------- */
 @media (max-width: 768px) {
-  * { box-sizing: border-box; }
+  body { overflow-x: hidden; }
 
-  body { width: 100vw !important; overflow-x: hidden !important; }
-
-  .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  section {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 16px !important;
-    margin: 0 !important;
-    display: block !important;
-  }
-
-  div[style*="max-width: 50%"] {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
-  div[style*="grid-template-columns: 1fr 1fr"] {
-    display: block !important;
-    width: 100% !important;
-  }
-
-  div[style*="grid-template-columns: 1fr 1fr"] > div {
-    width: 100% !important;
-    padding: 0 !important;
-    margin-bottom: 16px !important;
-  }
-
-  img {
-    max-width: 100% !important;
+  /* ---------- HERO ---------- */
+  section[style*="height: 100vh"] {
     height: auto !important;
-    display: block !important;
+    min-height: 90vh;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+    background-position: 72% center !important;
   }
-
-  div[style*="height: 50vh"] {
-    height: 250px !important;
+  /* Scrim de baixo p/ cima garante leitura do texto sobre a foto */
+  section[style*="height: 100vh"]::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 38%, rgba(0,0,0,0.12) 100%);
+    pointer-events: none;
   }
-
-  /* Stats */
-  .stats-row { grid-template-columns: 1fr !important; }
-
-  /* Typography */
-  h1 { font-size: 18px !important; }
-  h2 { font-size: 16px !important; }
-  p { font-size: 13px !important; }
-  span { font-size: 13px !important; }
-
-  .stat-num { font-size: 20px !important; }
-  .stat-label { font-size: 9px !important; }
-
-  .promise blockquote { font-size: 16px !important; }
-
-  /* Modal */
-  .modal-box {
-    width: 90vw !important;
-    max-width: 90vw !important;
-    padding: 16px !important;
-  }
-  .modal-box h3 { font-size: 16px !important; }
-
-  /* Form */
-  .form-label { font-size: 11px !important; }
-  .form-input, .form-select, .form-textarea { font-size: 13px !important; padding: 8px !important; }
-  .form-textarea { min-height: 80px !important; }
-
-  /* Buttons */
-  .btn-main, .btn-promise {
+  section[style*="height: 100vh"] > div {
+    position: relative;
+    z-index: 1;
+    max-width: 100% !important;
     width: 100% !important;
-    padding: 10px 16px !important;
-    font-size: 11px !important;
+    padding: 0 24px 56px !important;
   }
+  section[style*="height: 100vh"] .hero-eyebrow { font-size: 11px !important; }
+  section[style*="height: 100vh"] h1 {
+    font-size: clamp(30px, 8.4vw, 40px) !important;
+    margin: 14px 0 18px !important;
+  }
+  section[style*="height: 100vh"] p { font-size: 15px !important; max-width: 100% !important; }
+
+  /* ---------- STATS ---------- */
+  .stats-row { grid-template-columns: 1fr !important; }
+  .stat-cell { padding: 22px 24px !important; }
+  .stat-num { font-size: 32px !important; }
+  .stat-num[style] { font-size: 24px !important; }
+  .stat-label { font-size: 10px !important; }
+
+  /* ---------- ESPAÇAMENTO DAS SEÇÕES ---------- */
+  .strategy,
+  section[style*="padding: 80px 0"] { padding: 56px 0 !important; }
+  .container { padding: 0 24px !important; }
+
+  /* ---------- PROMESSA ---------- */
+  .promise { padding: 56px 24px !important; }
+  .promise blockquote {
+    font-size: clamp(22px, 6vw, 28px) !important;
+    margin-bottom: 28px !important;
+  }
+
+  /* ---------- BIO ---------- */
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  div[style*="height: 50vh"] {
+    height: 300px !important;
+    margin-bottom: 28px !important;
+  }
+  div[style*="padding: 0 40px"] { padding: 0 24px !important; }
+  img { max-width: 100% !important; height: auto; }
+
+  /* ---------- BOTÕES (alvo de toque ≥ 48px) ---------- */
+  .btn-main,
+  .btn-promise {
+    width: 100%;
+    text-align: center;
+    padding: 16px 24px !important;
+  }
+
+  /* ---------- MODAL (tela cheia no celular) ---------- */
+  .modal-overlay { padding: 0 !important; align-items: flex-start !important; }
+  .modal-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    padding: 52px 20px 40px !important;
+  }
+  .modal-box h3 { font-size: 22px !important; }
+  .modal-close { top: 12px; right: 14px; font-size: 30px; padding: 8px; }
+
+  /* ---------- FORMULÁRIO ---------- */
+  /* 16px no input evita o zoom automático do Safari iOS ao focar */
+  .form-input, .form-select, .form-textarea { font-size: 16px !important; }
+  .radio-item span { font-size: 14px !important; }
+}
+
+/* ---------- CELULAR PEQUENO ---------- */
+@media (max-width: 380px) {
+  section[style*="height: 100vh"] > div { padding: 0 18px 44px !important; }
+  .container { padding: 0 18px !important; }
+  .promise { padding: 48px 18px !important; }
 }
