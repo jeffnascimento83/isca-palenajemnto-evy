@@ -392,8 +392,8 @@ footer {
 .ft-copy strong { color: var(--yellow); }
 
 /* ============================================================
-   RESPONSIVO — Tablet / Celular  (reescrito)
-   Tipografia legível, hero editorial (foto + texto sobre scrim),
+   RESPONSIVO â€” Tablet / Celular  (reescrito)
+   Tipografia legÃ­vel, hero editorial (foto + texto sobre scrim),
    stats empilhados, modal em tela cheia e inputs sem zoom no iOS.
    ============================================================ */
 
@@ -417,7 +417,8 @@ footer {
     min-height: 90vh;
     align-items: flex-end !important;
     justify-content: flex-start !important;
-    background-position: 72% center !important;
+    background-position: center !important;
+    background-size: cover !important;
   }
   /* Scrim de baixo p/ cima garante leitura do texto sobre a foto */
   section[style*="height: 100vh"]::after {
@@ -448,7 +449,7 @@ footer {
   .stat-num[style] { font-size: 24px !important; }
   .stat-label { font-size: 10px !important; }
 
-  /* ---------- ESPAÇAMENTO DAS SEÇÕES ---------- */
+  /* ---------- ESPAÃ‡AMENTO DAS SEÃ‡Ã•ES ---------- */
   .strategy,
   section[style*="padding: 80px 0"] { padding: 56px 0 !important; }
   .container { padding: 0 24px !important; }
@@ -472,7 +473,7 @@ footer {
   div[style*="padding: 0 40px"] { padding: 0 24px !important; }
   img { max-width: 100% !important; height: auto; }
 
-  /* ---------- BOTÕES (alvo de toque ≥ 48px) ---------- */
+  /* ---------- BOTÃ•ES (alvo de toque â‰¥ 48px) ---------- */
   .btn-main,
   .btn-promise {
     width: 100%;
@@ -493,8 +494,8 @@ footer {
   .modal-box h3 { font-size: 22px !important; }
   .modal-close { top: 12px; right: 14px; font-size: 30px; padding: 8px; }
 
-  /* ---------- FORMULÁRIO ---------- */
-  /* 16px no input evita o zoom automático do Safari iOS ao focar */
+  /* ---------- FORMULÃRIO ---------- */
+  /* 16px no input evita o zoom automÃ¡tico do Safari iOS ao focar */
   .form-input, .form-select, .form-textarea { font-size: 16px !important; }
   .radio-item span { font-size: 14px !important; }
 }
